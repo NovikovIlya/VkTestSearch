@@ -2,19 +2,35 @@ import { useState } from 'react';
 import { SearchForm } from './components/SearchFrom/SearchForm';
 import { SearchContext } from './components/SearchResults/SearchContext';
 import { SearchResults } from './components/SearchResults/SearchResults';
-import { User } from './types/types';
+import { Root } from './types/types';
 
 export default function App() {
-  // Добавлен setUsers
-  const [users, setUsers] = useState<User[]>([]);
+  // Добавлены состояния в Context
+  const [users, setUsers] = useState<Root>({
+    users: [],
+    total: 0,
+    skip: 0,
+    limit: 0,
+  });
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  // Добавлена функция "changeUsers" для изменения состояния
-  const changeUsers = (data: User[]) => {
+  // Добавлены функции для изменения состояний в Context
+  const changeUsers = (data: Root) => {
     setUsers(data);
   };
 
+  const setErrorChange = (errorType: boolean) => {
+    setError(errorType);
+  };
+
+  const setLoadingChange = (loadingType: boolean) => {
+    setLoading(loadingType);
+  };
+
   return (
-    <SearchContext.Provider value={{ users, changeUsers }}>
+    <SearchContext.Provider
+      value={{ users, changeUsers, error, setErrorChange, loading, setLoadingChange }}>
       <SearchForm />
       <SearchResults />
     </SearchContext.Provider>

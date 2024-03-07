@@ -1,13 +1,25 @@
 import { createContext, Context } from 'react';
-import { User } from '../../types/types';
+import { Root } from '../../types/types';
 
 interface ISearchContext {
-  users: User[];
-  changeUsers: (data: User[]) => void;
+  users: Root;
+  changeUsers: (data: Root) => void;
+  error: boolean;
+  setErrorChange: (error: boolean) => void;
+  loading: boolean;
+  setLoadingChange: (loading: boolean) => void;
 }
 
 export const SearchContext: Context<ISearchContext> = createContext<ISearchContext>({
-  users: [],
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  changeUsers: (data: User[]) => {},
+  users: {
+    users: [],
+    total: 0,
+    skip: 0,
+    limit: 0,
+  },
+  changeUsers: () => {},
+  setErrorChange: () => {},
+  error: false,
+  loading: false,
+  setLoadingChange: () => {},
 });
