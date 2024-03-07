@@ -15,6 +15,7 @@ export default function App() {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
+
   // Добавлены функции для изменения состояний в Context
   const changeUsers = (data: Root) => {
     setUsers(data);
@@ -27,6 +28,7 @@ export default function App() {
   const setLoadingChange = (loadingType: boolean) => {
     setLoading(loadingType);
   };
+  
 
   return (
     <SearchContext.Provider

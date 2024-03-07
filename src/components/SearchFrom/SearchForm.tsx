@@ -9,11 +9,13 @@ export function SearchForm() {
   const [search, setSearch] = useState<string>('');
   const debouncedValue = useDebounce<string>(search, 1000);
 
+
   // Добавлена функция "changeText", которая вызывается при изменении значения input
   const changeText = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setSearch(value);
   };
+
 
   // Добавлен useEffect для запроса данных с помощью debounce
   useEffect(() => {
@@ -33,6 +35,7 @@ export function SearchForm() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedValue]);
 
+  
   return (
     <div className="searchForm">
       <form>
