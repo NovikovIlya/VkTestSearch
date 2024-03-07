@@ -7,6 +7,7 @@ import { UserCard } from '../UserCard/UserCard';
 import './style.css';
 
 export function SearchResults() {
+  // Добавлен Context
   const { users, error, loading } = useContext(SearchContext);
 
   return (
@@ -38,7 +39,7 @@ export function SearchResults() {
           <p className="usersList">Пользователи не найдены</p>
         )}
       </div>
-      
+
       {/* Отображаем в случае ошибки*/}
       <div>{error && <p>Произошла ошибка</p>}</div>
     </>
